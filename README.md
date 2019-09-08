@@ -10,6 +10,7 @@ In order to do this work, I needed Google Search data
 
 1. I used a Google Trends Javascript API made by Pat310 to gather the data.
 	- For the time period of July 1 - October 31 for the elections of 2004, 2008, 2012, and 2016, I gathered state-level Trends data comparing the candidate's names
+	- This can be found in the test_logic.js file
 	- For example, in 2016, 56 percent of searches for either Clinton or Trump were for Trump
 2. Following the paper's example, I then added supplementary metrics:~
 	- Lag vote - The % Republican vote of the state in the previous general election
@@ -18,6 +19,7 @@ In order to do this work, I needed Google Search data
 	- Model:
 	VOTE R = LAGVOTE R + REP [St/Nat] + DEM[St/Nat] + Rep/Dem Ratio
 	- I trained 3 models: One with 2016 as heldout data and just lagvote as the indendent variable, one with a random sample of states from the four elections, and one with 2016 as heldout data and the entire model used.
+	- This can be found in the regression.R file
 4. Results:
 	- Baseline model (Just lagvote as predictor, 2016 is heldout data): 
 	Residual standard error: 4.294 on 151 degrees of freedom
