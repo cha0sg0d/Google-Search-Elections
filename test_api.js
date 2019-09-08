@@ -21,7 +21,6 @@ avgs = [];
 str1 = "US-";
 
 var g2016 = ['Hillary Clinton','Donald Trump'];
-// var dates = [new Date('2008-07-01'), new Date('2008-10-31')];
 
 var dates = [new Date('2016-07-01'), new Date('2016-10-31')];
 
@@ -33,8 +32,6 @@ function getRatios(item,index,arr) {
 	tag = str1.concat(item);
 	tag = ['US',tag]
 	// console.log(tag)
-
-	// googleTrends.interestByRegion({keyword: string, startTime: Date, endTime: Date, geo: string, resolution: string}, cbFunc)
 
 	googleTrends.interestByRegion({keyword: g2016, 
 		startTime: dates[0], endTime: dates[1], 
@@ -68,9 +65,6 @@ function getRatios(item,index,arr) {
 }
 
 
-
-// states.forEach(getRatios);
-
 count = 0;
 
 states.forEach(function(item, index, arr) { // we add index param here, starts with 0
@@ -81,16 +75,3 @@ states.forEach(function(item, index, arr) { // we add index param here, starts w
 }) 
 
 
-
-
-// persons.forEach(function(person, index) { // we add index param here, starts with 0
-//     //your code
-//     else{
-//         setTimeout(function() {
-//             if (checkName(person)) {
-//                 console.log('Julie is ' + person.name)
-//                 results.push(person)
-//             }
-//         }, 5000*(index+1)) // or just index, depends on your needs
-//     }        
-// },5000*(index+1)) 
