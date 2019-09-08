@@ -26,11 +26,6 @@ summary(mod)
 base_2016$predicted <- predict(mod, newdata=base_2016)
 base_2016$residual <- base_2016$predicted - base_2016$actual_r_vote
 
-base_2016 <-  base_2016 %>%
-  mutate(Correct = ifelse(((actual_r_vote > 50) & (predicted > 50 )) | ((actual_r_vote < 50) & (predicted < 50 )), 1, 0))
-
-table(base_2016$Correct)
-
 # MODEL 1 - Random assortment of rows / years
 mod1 = lm(actual_r_vote ~ rep_dem_ratio + r_state_vs_national + lag_vote, data=train)
 summary(mod1)
@@ -39,21 +34,17 @@ summary(mod1)
 test$predicted <- predict(mod, newdata=test)
 test$residual <- test$predicted - test$actual_r_vote
 
-test <- test %>%
-  mutate(Correct = ifelse(((actual_r_vote > 50) & (predicted > 50 )) | ((actual_r_vote < 50) & (predicted < 50 )), 1, 0))
-
-table(test$Correct)
 
 # MODEL 2 2016 is heldout data
 mod2 = lm(actual_r_vote ~ rep_dem_ratio + r_state_vs_national + lag_vote, data=df)
-summary(mod2)
+sum_mod2 = summary(mod2)
 
 # Predictions
 df2$predicted <- predict(mod2, newdata=df2)
 df2$residual <- df2$predicted - df2$actual_r_vote
 
-df2 <- df2 %>%
-  mutate(Correct = ifelse(((actual_r_vote > 50) & (predicted > 50 )) | ((actual_r_vote < 50) & (predicted < 50 )), 1, 0))
 
-table(df2$Correct)
-
+# base_2016 <-  base_2016 %>%
+#   mutate(Correct = ifelse(((actual_r_vote > 50) & (predicted > 50 )) | ((actual_r_vote < 50) & (predicted < 50 )), 1, 0))
+# 
+# table(base_2016$Correct)
