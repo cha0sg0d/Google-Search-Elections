@@ -1,3 +1,5 @@
+### Project Summary ###
+
 This project extends a study done by Laura Granka, the UX Director at Google Search and Assistant.
 
 Laura uses Google Trends data to build a model for predicting US general election results
