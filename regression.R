@@ -36,12 +36,14 @@ test$residual <- test$predicted - test$actual_r_vote
 
 
 # MODEL 2 2016 is heldout data
-mod2 = lm(actual_r_vote ~ rep_dem_ratio + r_state_vs_national + lag_vote, data=df)
-sum_mod2 = summary(mod2)
+mod2 = lm(actual_r_vote ~ rep_dem_ratio + r_state_vs_national + d_state_vs_national + lag_vote, data=df)
+summary(mod2)
 
 # Predictions
 df2$predicted <- predict(mod2, newdata=df2)
 df2$residual <- df2$predicted - df2$actual_r_vote
+
+write.table(df2, file = "2016_pred.csv",row.names=FALSE, na="",col.names=TRUE, sep=",")
 
 
 # base_2016 <-  base_2016 %>%
